@@ -1,1 +1,1 @@
-setInterval(() => console.log(Date.now()), 1000);
+setInterval(() => console.log(Date.now()), 100);

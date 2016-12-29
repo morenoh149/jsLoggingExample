@@ -11,13 +11,13 @@ test('app prints to stdout', t => {
         // if (error || stderr) { 
         //   reject();
         // }
-        const output = stdout.trim().split('\n');
-        resolve(output);
+        const log = stdout.trim().split('\n');
+        resolve(log);
       }
     );
     setTimeout(() => { server.kill('SIGTERM'); }, 1000);
-  }).then((output) => {
-    t.truthy(output);
+  }).then((log) => {
+    t.truthy(log);
   });
 });
 
@@ -27,12 +27,12 @@ test('another test to illustrate parallelism', t => {
       'node ./index.js',
       { env: { SERVER_PORT: 4001 }},
       (error, stdout, stderr) => {
-        const output = stdout.trim().split('\n');
-        resolve(output);
+        const log = stdout.trim().split('\n');
+        resolve(log);
       }
     );
     setTimeout(() => { server.kill('SIGTERM'); }, 1000);
-  }).then((output) => {
-    t.truthy(output);
+  }).then((log) => {
+    t.true(log.length > 3);
   });
 });
